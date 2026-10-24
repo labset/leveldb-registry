@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/viqueen/leveldb-registry.git"
+    "url": "git+https://github.com/labset/leveldb-registry.git"
   },
   "keywords": [
     "leveldb",
@@ -26,9 +26,9 @@
   "author": "Hasnae R.",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/viqueen/leveldb-registry/issues"
+    "url": "https://github.com/labset/leveldb-registry/issues"
   },
-  "homepage": "https://github.com/viqueen/leveldb-registry#readme",
+  "homepage": "https://github.com/labset/leveldb-registry#readme",
   "devDependencies": {
     "@labset-eslint/eslint-plugin": "^1.2.0",
     "@types/jest": "^29.4.0",
