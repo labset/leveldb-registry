@@ -1,2 +1,3 @@
 allowBuilds:
+  classic-level: false
   leveldown: false

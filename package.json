@@ -46,6 +46,7 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "classic-level": "^3.0.0",
     "leveldown": "^6.1.1",
     "levelup": "^5.1.1"
   }
