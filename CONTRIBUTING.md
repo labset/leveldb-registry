@@ -1,29 +1,37 @@
 ## environment
 
-I use **[nvm](https://github.com/nvm-sh/nvm)** to manage my node versions.
+I use **[mise](https://mise.jdx.dev/)** to manage the toolchain. It pins both
+node and pnpm (see `.mise.toml`).
 
 ```bash
-brew install nvm
+brew install mise
 ```
 
 ## development setup
 
-- create a fork of the repo, clone it, and install the dependencies
+- create a fork of the repo, clone it, and install the toolchain
 
 ```bash
 cd leveldb-registry
-nvm install
-yarn
+mise install
 ```
 
-- setup git hooks
+- install the dependencies
 
 ```bash
-npx husky install
+pnpm install
 ```
 
 - build it in watch mode
 
 ```bash
-yarn build --watch
+pnpm build --watch
+```
+
+## checks
+
+```bash
+pnpm test          # run the test suite
+pnpm lint          # lint with eslint
+pnpm format:check  # check formatting with prettier
 ```
