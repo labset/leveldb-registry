@@ -27,7 +27,7 @@ export const leveldbRegistry = <TItem extends Identifiable>({
   localPath,
 }: RegistryInfo): Registry<TItem> => {
   const withLeveldb = async <T>(
-    fn: (s: ClassicLevel<string, string>) => Promise<T>
+    fn: (s: ClassicLevel<string, string>) => Promise<T>,
   ): Promise<T> => {
     const db = new ClassicLevel<string, string>(localPath);
     const result = await fn(db);
