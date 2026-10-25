@@ -13,53 +13,53 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const js = require('@eslint/js');
-const importPlugin = require('eslint-plugin-import');
-const globals = require('globals');
-const tseslint = require('typescript-eslint');
+const js = require("@eslint/js");
+const importPlugin = require("eslint-plugin-import");
+const globals = require("globals");
+const tseslint = require("typescript-eslint");
 
 module.exports = tseslint.config(
-    {
-        ignores: ['__generated__/', 'dist/', '.next/'],
+  {
+    ignores: ["__generated__/", "dist/", ".next/"],
+  },
+  js.configs.recommended,
+  ...tseslint.configs.recommended,
+  importPlugin.flatConfigs.recommended,
+  {
+    files: ["**/*.{ts,tsx}"],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
     },
-    js.configs.recommended,
-    ...tseslint.configs.recommended,
-    importPlugin.flatConfigs.recommended,
-    {
-        files: ['**/*.{ts,tsx}'],
-        languageOptions: {
-            globals: {
-                ...globals.browser,
-                ...globals.node,
+    settings: {
+      "import/resolver": {
+        node: {
+          extensions: [".js", ".ts", ".tsx"],
+        },
+      },
+    },
+    rules: {
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        { argsIgnorePattern: "_" },
+      ],
+      "import/order": [
+        "error",
+        {
+          "newlines-between": "always",
+          alphabetize: { order: "asc", caseInsensitive: true },
+          pathGroups: [
+            {
+              pattern: "{level*}",
+              group: "external",
+              position: "before",
             },
+          ],
+          pathGroupsExcludedImportTypes: ["builtin"],
         },
-        settings: {
-            'import/resolver': {
-                node: {
-                    extensions: ['.js', '.ts', '.tsx'],
-                },
-            },
-        },
-        rules: {
-            '@typescript-eslint/no-unused-vars': [
-                'error',
-                { argsIgnorePattern: '_' },
-            ],
-            'import/order': [
-                'error',
-                {
-                    'newlines-between': 'always',
-                    alphabetize: { order: 'asc', caseInsensitive: true },
-                    pathGroups: [
-                        {
-                            pattern: '{level*}',
-                            group: 'external',
-                            position: 'before',
-                        },
-                    ],
-                    pathGroupsExcludedImportTypes: ['builtin'],
-                },
-            ],
-        },
-    }
+      ],
+    },
+  }
 );
