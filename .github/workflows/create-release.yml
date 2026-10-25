@@ -6,16 +6,17 @@ on:
 
 jobs:
   publish-npm:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    permissions:
+      id-token: write
+      contents: read
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          registry-url: https://registry.npmjs.org/
-      - run: yarn
-      - run: yarn test
-      - run: yarn build
-      - run: npm publish --access public
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/setup
+      - run: pnpm format:check
+      - run: pnpm lint
+      - run: pnpm test
+      - run: pnpm build
+      - run: pnpm publish --access public --no-git-checks
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
