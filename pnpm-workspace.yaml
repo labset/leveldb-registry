@@ -1,5 +1,5 @@
 allowBuilds:
-  '@parcel/watcher': false
+  "@parcel/watcher": false
   classic-level: false
   leveldown: false
   unrs-resolver: false

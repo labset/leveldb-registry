@@ -20,7 +20,7 @@ const tseslint = require('typescript-eslint');
 
 module.exports = tseslint.config(
     {
-        ignores: ['__generated__/', 'dist/', '.next/']
+        ignores: ['__generated__/', 'dist/', '.next/'],
     },
     js.configs.recommended,
     ...tseslint.configs.recommended,
@@ -30,20 +30,20 @@ module.exports = tseslint.config(
         languageOptions: {
             globals: {
                 ...globals.browser,
-                ...globals.node
-            }
+                ...globals.node,
+            },
         },
         settings: {
             'import/resolver': {
                 node: {
-                    extensions: ['.js', '.ts', '.tsx']
-                }
-            }
+                    extensions: ['.js', '.ts', '.tsx'],
+                },
+            },
         },
         rules: {
             '@typescript-eslint/no-unused-vars': [
                 'error',
-                { argsIgnorePattern: '_' }
+                { argsIgnorePattern: '_' },
             ],
             'import/order': [
                 'error',
@@ -54,12 +54,12 @@ module.exports = tseslint.config(
                         {
                             pattern: '{level*}',
                             group: 'external',
-                            position: 'before'
-                        }
+                            position: 'before',
+                        },
                     ],
-                    pathGroupsExcludedImportTypes: ['builtin']
-                }
-            ]
-        }
+                    pathGroupsExcludedImportTypes: ['builtin'],
+                },
+            ],
+        },
     }
 );
